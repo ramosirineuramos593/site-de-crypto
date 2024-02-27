@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <div class="logo-container">
+        <img class="logo" src="02.png" alt="Logotipo">
+
+
+
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        <style>
+            /* Estilos CSS adicionais */
+            
+            .buttoniq-mt-15 {
+                border: #fbff00;
+            }
+            
+            .contact-form {
+                border: #fbff00;
+                padding: 3px;
+                border-radius: 5px;
+            }
+            
+            #result {
+                margin-top: 20px;
+            }
+            
+            .search-bar {
+                display: flex;
+                justify-content: flex-end;
+                margin-bottom: 20px;
+            }
+            
+            .search-bar .form-control {
+                width: 300px;
+            }
+        </style>
+        <script>
+            function searchCoin() {
+                var coinInput = document.getElementById('coin-input').value;
+
+                // Fazer uma chamada para a API CoinGecko para obter os dados da moeda
+                var apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=' + coinInput.toLowerCase();
+
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        var resultDiv = document.getElementById('result');
+
+                        if (data.length === 0) {
+                            resultDiv.innerHTML = 'Moeda não encontrada';
+                        } else {
+                            var coinPrice = data[0].current_price;
+                            var volume24h = data[0].total_volume;
+                            var marketCap = data[0].market_cap;
+
+                            resultDiv.innerHTML = `
+              <p>Cotação de ${coinInput}: $${coinPrice}</p>
+              <p>Volume das últimas 24 horas: $${volume24h}</p>
+              <p>Market Cap total: $${marketCap.toLocaleString()}</p>
+            `;
+                        }
+                    })
+                    .catch(error => {
+                        console.log('Ocorreu um erro:', error);
+                    });
+            }
+        </script>
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="search-bar">
+            <input type="text" id="coin-input" class="form-control mr-3" placeholder="Digite o nome da criptomoeda">
+            <button class="btn btn-primary" type="button" onclick="searchCoin()">Pesquisar</button>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div id="result" class="alert alert-info" role="alert">
+                    <!-- O resultado da cotação da moeda será exibido aqui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <p> </p>
+
+    <p>
+
+
+
+    </p>
+    </div>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20vh;
+            padding: 0px;
+            image-rendering: 100px;
+        }
+        
+        .logo {
+            max-width: 50%;
+            max-height: 50%;
+        }
+    </style>
+    <div>
+        <style>
+        {}
+            
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #304878;
+                padding: 20px;
+                perspective: 1000px;
+            }
+            
+            label {
+                color: #000000;
+                text-align: center;
+                margin-bottom: 30px;
+                font-size: 32px;
+                transform-style: preserve-3d;
+                transform: translateZ(0);
+            }
+            
+            h1 {
+                color: #e50914;
+                text-align: center;
+                margin-bottom: 30px;
+                font-size: 32px;
+                transform-style: preserve-3d;
+                transform: translateZ(0);
+            }
+            
+            .calculator {
+                background-color: #000000, #0b38a0, #15e7ac);
+                border: 3px solid #fff800;
+                border-radius: 10px;
+                padding: 20px;
+                margin-top: 30px;
+                transform-style: preserve-3d;
+                transform: translateZ(0);
+            }
+            
+            .btn-primary {
+                background-color: #e50914;
+                border: none;
+                transform-style: preserve-3d;
+                transform: translateZ(0);
+            }
+            
+            .btn-primary:hover {
+                background-color: #c40811;
+                transform-style: preserve-3d;
+                transform: translateZ(0);
+            }
+            
+            .result {
+                color: #ffffff;
+                font-size: 24px;
+                text-align: center;
+                margin-top: 20px;
+                transform-style: preserve-3d;
+                transform: translateZ(0);
+            }
+            
+            .label {
+                background-color: #fbff00;
+                border: 5px;
+            }
+        }
+        .th {
+            background-color: #ffffff;
+            border: 1px;
+        }
+        </style>
+        </head>
+
+        <body>
+            <div class="container">
+
+                <body>
+                    <div>
+                        <div class="calculator">
+                            <div class="form-group">
+                                <label for="crypto-select"> <h1>   Selecione a criptomoeda: </h1> </label>
+                                <select id="crypto-select" class="form-control">
+                    <option value="bitcoin">Bitcoin (BTC)</option>
+                    <option value="ethereum">Ethereum (ETH)</option>
+                    <option value="cardano"> Cardano (ADA)</option>
+                    <option value="solana">Solana (SOL)</option>
+                    <option value="polkadot">Polkadot (DOT)</option>
+                    <option value="dogecoin">Dogecoin (DOGE)</option>
+                    <option value="chainlink">Chainlink (LINK)</option>
+                    <option value="litecoin">Litecoin (LTC)</option>
+                    <option value="bitcoincash">Bitcoin Cash (BCH)</option>
+                    <option value="stellar">Stellar (XLM)</option>
+                    <option value="uniswap">Uniswap (UNI)</option>
+                    <option value="filecoin">Filecoin (FIL)</option>
+                    <option value="theta">Theta (THETA)</option>
+                    <option value="vechain">VeChain (VET)</option>
+                    <option value="cosmos">Cosmos (ATOM)</option>
+                    <option value="monero">Monero (XMR)</option>
+                    <option value="tron">Tron (TRX)</option>
+                    <option value="eos">EOS (EOS)</option>
+                    <option value="iota">IOTA (MIOTA)</option>
+                    <option value="neo">Neo (NEO)</option>
+                    <option value="aave">Aave (AAVE)</option>
+                    <option value="pancakeswap">PancakeSwap (CAKE)</option>
+                    <option value="tezos">Tezos (XTZ)</option>
+                    <option value="algorand">Algorand (ALGO)</option>
+                    <option value="dash">Dash (DASH)</option>
+                    <option value="compound">Compound (COMP)</option>
+                    <option value="avalanche">Avalanche (AVAX)</option>
+                    <option value="huobitoken">Huobi Token (HT)</option>
+                    <option value="maker">Maker (MKR)</option>
+                    <option value="sushiswap">SushiSwap (SUSHI)</option>
+                    <option value="synthetix">Synthetix (SNX)</option>
+                    <option value="polygon">Polygon (MATIC)</option>
+                    <option value="golem">Golem (GLM)</option>
+                    <option value="maidsafecoin">MaidSafeCoin (MAID)</option>
+                    <option value="augur">Augur (REP)</option>
+                    <option value="celsius">Celsius Network (CEL)</option>
+                    <option value="pax-gold">PAX Gold (PAXG)</option>
+                    <option value="icon">ICON (ICX)</option>
+                    <option value="stmx">StormX (STMX)</option>
+                    <option value="bancor-network-token">Bancor Network Token (BNT)</option>
+                    <option value="ocean-protocol">Ocean Protocol (OCEAN)</option>
+                    <option value="harmony">Harmony (ONE)</option>
+                    <option value="utrust">UTRUST (UTK)</option>
+                    <option value="counos-x">Counos X (CCXX)</option>
+                    <option value="verge">Verge (XVG)</option>
+                    <option value="wanchain">Wanchain (WAN)</option>
+                    <option value="decentraland">Decentraland (MANA)</option>
+                    <option value="cybervein">CyberVein (CVT)</option>
+                    <option value="nervos-network">Nervos Network (CKB)</option>
+                    <option value="nxt">Nxt (NXT)</option>
+                    <option value="everipedia">Everipedia (IQ)</option>
+                    <option value="zcoin">Zcoin (XZC)</option>
+                    <option value="power-ledger">Power Ledger (POWR)</option>
+                    <option value="crypto-com">Crypto.com Coin (CRO)</option>
+                    <option value="hathor-network">Hathor (HTR)</option>
+                    <option value="populous">Populous (PPT)</option>
+                    <option value="civic">Civic (CVC)</option>
+                    <option value="wax">WAX (WAXP)</option>
+                    <option value="golem">Golem (GLM)</option>
+                    <option value="komodo">Komodo (KMD)</option>
+                    <option value="status">Status (SNT)</option>
+                    <option value="district0x">district0x (DNT)</option>
+                    <option value="ardor">Ardor (ARDR)</option>
+                    <option value="ontology">Ontology (ONT)</option>
+                    <option value="gno">Gnosis (GNO)</option>
+                    <option value="true-usd">TrueUSD (TUSD)</option>
+                    <option value="renbtc">renBTC (RENBTC)</option>
+                    <option value="monaco">Crypto.com (MCO)</option>
+                    <option value="achain">Achain (ACT)</option>
+                    <option value="true-usd">TrueUSD (TUSD)</option>
+                    <option value="syscoin">Syscoin (SYS)</option>
+                    <option value="metal">Metal (MTL)</option>
+                    <option value="snt">Status (SNT)</option>
+                    <option value="gnosis-gno">Gnosis (GNO)</option>
+                    <option value="particl">Particl (PART)</option>
+                    <option value="cindicator">Cindicator (CND)</option>
+                    <option value="neblio">Neblio (NEBL)</option>
+                    <option value="cocos-bcx">Cocos-BCX (COCOS)</option>
+                    <option value="dusk-network">Dusk Network (DUSK)</option>
+                    <option value="nuls">NULS (NULS)</option>
+                    <option value="smartcash">SmartCash (SMART)</option>
+                    <option value="crowd-machine">Crowd Machine (CMCT)</option>
+                    <option value="gifto">Gifto (GTO)</option>
+                    <option value="ark">Ark (ARK)</option>
+                    <option value="c20">CRYPTO20 (C20)</option>
+                    <option value="truechain">TrueChain (TRUE)</option>
+                    <option value="securus">Securus (SCR)</option>
+                    <option value="adx-net">AdEx (ADX)</option>
+                    <option value="asch">Asch (XAS)</option>
+                    <option value="cloakcoin">CloakCoin (CLOAK)</option>
+                    <option value="time-new-bank">Time New Bank (TNB)</option>
+                    <option value="request-network">Request (REQ)</option>
+                    <option value="elastos">Elastos (ELA)</option>
+                    <option value="cortex">Cortex (CTXC)</option>
+                    <option value="raiden-network-token">Raiden Network Token (RDN)</option>
+                    <option value="presearch">Presearch (PRE)</option>
+                    <option value="iost">IOST (IOST)</option>
+                    <option value="ether-zero">Ether Zero (ETZ)</option>
+                    <option value="raiden-network">Raiden Network (RDN)</option>
+                    <option value="bittorrent">BitTorrent (BTT)</option>
+                    <option value="beldex">Beldex (BDX)</option>
+                    <option value="nkn">NKN (NKN)</option>
+                    <option value="everex">Everex (EVX)</option>
+                    <option value="bit-z-token">Bit-Z Token (BZ)</option>
+                    <option value="solarcoin">Solarcoin (SLR)</option>
+                    <option value="decentraland-mana">Decentraland (MANA)</option>
+                    <option value="creditcoin">Creditcoin (CTC)</option>
+                    <option value="unicrypt">UniCrypt (UNC)</option>
+                    <option value="effect-ai">Effect.AI (EFX)</option>
+                    <option value="waykichain">WaykiChain (WICC)</option>
+                    <option value="peercoin">Peercoin (PPC)</option>
+                    <option value="ethereum-push-notification-service">Ethereum Push Notification Service (PUSH)</option>
+                    <option value="u-network">U Network (UUU)</option>
+                    <option value="loki-network">Loki Network (LOKI)</option>
+                    <option value="gamecredits">GameCredits (GAME)</option>
+                    <option value="swftcoin">SWFTCoin (SWFTC)</option>
+                    <option value="lition">Lition (LIT)</option>
+                    <option value="airswap">AirSwap (AST)</option>
+                    <option value="crown">Crown (CRW)</option>
+                    <option value="unibright">Unibright (UBT)</option>
+                    <option value="jibrel-network">Jibrel Network (JNT)</option>
+                    <option value="the-sandbox">The Sandbox (SAND)</option>
+                    <option value="oneledger">OneLedger (OLT)</option>
+                    <option value="smartmesh">SmartMesh (SMT)</option>
+                    <option value="darwinia-network-native-token">Darwinia Network Native Token (RING)</option>
+                    <option value="decentral-games">Decentral Games (DG)</option>
+                    <option value="escoin-token">Escoin Token (ELG)</option>
+                    <option value="swarm">Swarm (SWM)</option>
+                    <option value="dynamic">Dynamic (DYN)</option>
+                    <option value="traxia">Traxia (TMT)</option>
+                    <option value="yoyow">YOYOW (YOYOW)</option>
+                    <option value="hush">Hush (HUSH)</option>
+                    <option value="cryptaur">Cryptaur (CPT)</option>
+                    <option value="tokencard">Monolith (TKN)</option>
+                    <option value="trueflip">TrueFlip (TFL)</option>
+                    <option value="particl">Particl (PART)</option>
+                    <option value="loki">Loki (LOKI)</option>
+                    <option value="origo-network">Origo Network (OGO)</option>
+                    <option value="rainbow-token">Rainbow Token (RNBW)</option>
+                    <option value="spankchain">SpankChain (SPANK)</option>
+                    <option value="trustnote">TrustNote (TTT)</option>
+                    <option value="ruff">Ruff (RUFF)</option>
+                    <option value="biblepay">BiblePay (BBP)</option>
+                    <option value="elastos-ela">Elastos (ELA)</option>
+                    <option value="nostcoin">NOSTCOIN (NOST)</option>
+                    <option value="daostack">DAOstack (GEN)</option>
+                    <option value="show">Show (SHOW)</option>
+                    <option value="massnet">MASS (MASS)</option>
+                    <option value="gamb">GAMB (GMB)</option>
+                    <option value="sakura-bloom">Sakura Bloom (SKB)</option>
+                    <option value="bridge-oracle">Bridge Oracle (BRG)</option>
+                    <option value="monacoin">Monacoin (MONA)</option>
+                    <option value="raven-protocol">Raven Protocol (RAVEN)</option>
+                    <option value="adshares">AdShares (ADS)</option>
+                    <option value="metahash">MetaHash (MHC)</option>
+                    <option value="atmchain">ATMChain (ATM)</option>
+                    <option value="proxima-x">ProximaX (XPX)</option>
+                    <option value="moac">MOAC (MOAC)</option>
+                    <option value="tokok">Tokok (TOK)</option>
+                    <option value="remme">Remme (REM)</option>
+                    <option value="sun-token">SUN Token (SUN)</option>
+                    <option value="op-coin">OP Coin (OPC)</option>
+                    <option value="top-network">TOP Network (TOP)</option>
+                    <option value="carvertical">carVertical (CV)</option>
+                    <option value="vexanium">Vexanium (VEX)</option>
+                    <option value="haven-protocol">Haven Protocol (XHV)</option>
+                    <option value="fortuna">Fortuna (FOTA)</option>
+                    <option value="gulden">Gulden (NLG)</option>
+                    <option value="beam">Beam (BEAM)</option>
+                    <option value="akropolis">Akropolis (AKRO)</option>
+                    <option value="strong">Strong (STRONG)</option>
+                    <option value="adex">AdEx (ADX)</option>
+                    <option value="bittorrent">BitTorrent (BTT)</option>
+                    <option value="gourmet">Gourmet (GTR)</option>
+                    <option value="infinity-economics">Infinity Economics (XIN)</option>
+                    <option value="spacechain">SpaceChain (SPC)</option>
+                    <option value="qiwi">QIWI (QIWI)</option>
+                    <option value="whitecoin">WhiteCoin (XWC)</option>
+                    <option value="meta">Meta (MTA)</option>
+                    <option value="davinci-coin">Davinci Coin (DAC)</option>
+                    <option value="kardiachain">KardiaChain (KAI)</option>
+                    <option value="power-ledger">Power Ledger (POWR)</option>
+                    <option value="bounty0x">Bounty0x (BNTY)</option>
+                    <option value="nucleus-vision">Nucleus Vision (NCASH)</option>
+                    <option value="unikoin-gold">Unikoin Gold (UKG)</option>
+                    <option value="molecular-future">Molecular Future (MOF)</option>
+                    <option value="robonomics-network">Robonomics Network (XRT)</option>
+                    <option value="ethlend">Aave (LEND)</option>
+                    <option value="tokes">Tokes (TKS)</option>
+                    <option value="carry">Carry (CRE)</option>
+                    <option value="fantasy-gold">FantasyGold (FGC)</option>
+                    <option value="nimiq">Nimiq (NIM)</option>
+                    <option value="tincoin">Tincoin (TIN)</option>
+                    <option value="plair">Plair (PLA)</option>
+                    <option value="equilibrium-eosdt">Equilibrium (EOSDT)</option>
+                    <option value="cappasity">Cappasity (CAPP)</option>
+                    <option value="arcblock">Arcblock (ABT)</option>
+                    <option value="platoncoin">PlatonCoin (PLTC)</option>
+                    <option value="function-x">Function X (FX)</option>
+                    <option value="escoin">Escoin Token (ELG)</option>
+                    <option value="sinovate">SINOVATE (SIN)</option>
+                    <option value="zip">Zip (ZIP)</option>
+                    <option value="corionx">CorionX (CORX)</option>
+                    <option value="riecoin">Riecoin (RIC)</option>
+                    <option value="einsteinium">Einsteinium (EMC2)</option>
+                    <option value="tkeycoin">Tkeycoin (TKEY)</option>
+                    <option value="nebula-ai">Nebula AI (NBAI)</option>
+                    <option value="neumark">Neumark (NEU)</option>
+                    <option value="zelcash">Zelcash (ZEL)</option>
+                    <option value="spectrecoin">Spectrecoin (XSPEC)</option>
+                    <option value="emercoin">Emercoin (EMC)</option>
+                    <option value="hempcoin">HempCoin (THC)</option>
+                    <option value="contentos">Contentos (COS)</option>
+                    <option value="sharering">ShareRing (SHR)</option>
+                    <option value="lina">LINA (LINA)</option>
+                    <option value="matrix-ai-network">Matrix AI Network (MAN)</option>
+                    <option value="bulwark">Bulwark (BWK)</option>
+                    <option value="crowd-machine">Crowd Machine (CMCT)</option>
+                    <option value="lendroid-support-token">Lendroid Support Token (LST)</option>
+                    <option value="ethos">Ethos (ETHOS)</option>
+                    <option value="monero-classic">Monero Classic (XMC)</option>
+                    <option value="byteball">Byteball Bytes (GBYTE)</option>
+                    <option value="maximine-coin">Maximine Coin (MXM)</option>
+                    <option value="bluzelle">Bluzelle (BLZ)</option>
+                    <option value="morpheus-labs">Morpheus Labs (MITX)</option>
+                    <option value="pluton">Pluton (PLU)</option>
+                    <option value="decred">Decred (DCR)</option>
+                    <option value="eosforce">EOSForce (EOSC)</option>
+                    <option value="bscpad">BSCPAD (BSCPAD)</option>
+                    <option value="viberate">Viberate (VIB)</option>
+                    <option value="peerplays">Peerplays (PPY)</option>
+                    <option value="sentinel">Sentinel (DVPN)</option>
+                    <option value="auroracoin">Auroracoin (AUR)</option>
+                    <option value="bismuth">Bismuth (BIS)</option>
+                    <option value="litecoin-cash">Litecoin Cash (LCC)</option>
+                    <option value="deviantcoin">DeviantCoin (DEV)</option>
+                    <option value="statera">Statera (STA)</option>
+                    <option value="neoscoin">Neoscoin (NEOS)</option>
+                    <option value="lightning-bitcoin">Lightning Bitcoin (LBTC)</option>
+                    <option value="horizen">Horizen (ZEN)</option>
+                    <option value="zioncoin">ZionCoin (ZNC)</option>
+                    <option value="nem">NEM (XEM)</option>
+                    <option value="dydx">dYdX (DYDX)</option>
+                    <option value="etherparty">Etherparty (FUEL)</option>
+                    <option value="spartan-protocol">Spartan Protocol (SPARTA)</option>
+                    <option value="stakecube">StakeCubeCoin (SCC)</option>
+                    <option value="mobius">Mobius (MOBI)</option>
+                    <option value="turtlecoin">TurtleCoin (TRTL)</option>
+                    <option value="polymath">Polymath (POLY)</option>
+                    <option value="ubiq">Ubiq (UBQ)</option>
+                    <option value="thunder-token">Thunder Token (TT)</option>
+                    <option value="europecoin">EuropeCoin (ERC)</option>
+                    <option value="solve-care">SOLVE (SOLVE)</option>
+                    <option value="curecoin">Curecoin (CURE)</option>
+                    <option value="cloakcoin">CloakCoin (CLOAK)</option>
+                    <option value="cryptopay">Cryptopay (CPAY)</option>
+                    <option value="request">Request (REQ)</option>
+                    <option value="suretly">Suretly (SUR)</option>
+                    <option value="revain">Revain (REV)</option>
+                    <option value="tokenomy">Tokenomy (TEN)</option>
+                    <option value="ramp">Ramp (RAMP)</option>
+                    <option value="archer-dao-governance-token">Archer DAO Governance Token (ARCH)</option>
+                    <option value="axie-infinity">Axie Infinity (AXS)</option>
+                    <option value="sparkpoint">SparkPoint (SRK)</option>
+                    <option value="ontology-gas">Ontology Gas (ONG)</option>
+                    <option value="bytom">Bytom (BTM)</option>
+                    <option value="odyssey">Odyssey (OCN)</option>
+                    <option value="haven">Haven (XHV)</option>
+                    <option value="matrixport">Matrixport (MP)</option>
+                    <option value="celsius-degree-token">Celsius Degree Token (CEL)</option>
+                    <option value="usdk">USDK (USDK)</option>
+                    <option value="aergo">Aergo (AERGO)</option>
+                    <option value="red-fox-labs">RedFOX Labs (RFOX)</option>
+                    <option value="renbtc">renBTC (RENBTC)</option>
+                    <option value="airbloc">Airbloc (ABL)</option>
+                    <option value="atari-token">Atari Token (ATRI)</option>
+                    <option value="bitcapitalvendor">BitCapitalVendor (BCV)</option>
+                    <option value="atromg8">AtromG8 (AG8)</option>
+                    <option value="kadena">Kadena (KDA)</option>
+                    <option value="publica">Publica (PBL)</option>
+                    <option value="zenon">Zenon (ZNN)</option>
+                    <option value="energy-web-token">Energy Web Token (EWT)</option>
+                    <option value="verge">Verge (XVG)</option>
+                    <option value="centaur">Centaur (CNTR)</option>
+                    <option value="syscoin">Syscoin (SYS)</option>
+                    <option value="streamr-datacoin">Streamr (DATA)</option>
+                    <option value="bitkan">BitKan (KAN)</option>
+                    <option value="ultrain">Ultrain (UGAS)</option>
+                    <option value="oxycoin">Oxycoin (OXY)</option>
+                    <option value="selfkey">SelfKey (KEY)</option>
+                    <option value="blockmason">Blockmason Credit Protocol (BCPT)</option>
+                    <option value="cryptocean">Cryptocean (CRON)</option>
+                    <option value="sirin-labs-token">SIRIN LABS Token (SRN)</option>
+                    <option value="talent-token">Talent Token (TLNT)</option>
+                    <option value="c20">CRYPTO20 (C20)</option>
+                    <option value="harmony">Harmony (ONE)</option>
+                    <option value="aeron">Aeron (ARN)</option>
+                    <option value="peps-coin">PEPS Coin (PEPS)</option>
+                    <option value="ormeus-coin">Ormeus Coin (ORME)</option>
+                    <option value="pillar">Pillar (PLR)</option>
+                    <option value="tfuel">Theta Fuel (TFUEL)</option>
+                    <option value="auto">Auto (AUTO)</option>
+                    <option value="zebi">Zebi (ZEBI)</option>
+                    <option value="credits">Credits (CS)</option>
+                      <!-- Adicione as outras 97 opções de criptomoedas aqui -->
+                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="amount-input"> <h1> Conversão de criptomoedas para 11 moedas diferentes:  </h1>   </label>
+                                <input type="number" class="form-control" id="amount-input">
+                            </div>
+                            <button class="btn btn-primary" onclick="convertCurrency()">Converter</button>
+                            <div id="result" class="result"></div>
+                        </div>
+                    </div>
+
+                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+                    <script>
+                        function convertCurrency() {
+                            const cryptoSelect = document.getElementById('crypto-select');
+                            const amountInput = document.getElementById('amount-input');
+                            const resultDiv = document.getElementById('result');
+
+                            const crypto = cryptoSelect.value;
+                            const amount = parseFloat(amountInput.value);
+
+                            if (!crypto || isNaN(amount)) {
+                                resultDiv.innerHTML = 'Por favor, selecione uma criptomoeda e insira uma quantidade válida.';
+                                return;
+                            }
+
+                            axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`)
+                                .then(response => {
+                                    const price = response.data[crypto].usd;
+                                    const conversion = price * amount;
+
+                                    resultDiv.innerHTML = `${amount} ${crypto.toUpperCase()} = $${conversion.toFixed(2)}`;
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                    resultDiv.innerHTML = 'Ocorreu um erro ao converter a moeda.';
+                                });
+                        }
+                    </script>
+
+                    <head>
+                        <title> </title>
+                        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                background: linear-gradient(to right, #6495ED, #8A2BE2);
+                                padding: 20px;
+                            }
+                            
+                            th {
+                                color: #ffffff;
+                            }
+                            
+                            h1 {
+                                color: #ffffff;
+                                text-align: center;
+                                margin-bottom: 30px;
+                                font-size: 32px;
+                            }
+                            
+                            .crypto-table {
+                                margin-top: 20px;
+                            }
+                            
+                            .crypto-table th {
+                                color: #000000;
+                                font-weight: bold;
+                            }
+                            
+                            .crypto-table td {
+                                color: #000000;
+                            }
+                        </style>
+                    </head>
+
+                    <body>
+                        <p> </p>
+                        <div class="container">
+                            <h1>Rastreamento de Criptomoedas - Top 250</h1>
+
+                            <div class="crypto-table">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"></th>
+                                            <th scope="col"> 🟡 Criptomoedas Mundial </th>
+                                            <th scope="col"> 🟡 Preço (USD)</th>
+                                            <th scope="col"> 🟡 Quantidade de Moeda</th>
+                                            <th scope="col"> 🟡 Volume de Negociação em 24 horas (USD)</th>
+                                            <th scope="col"> 🟡Market Cap Total (USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="crypto-list"></tbody>
+                                </table>
+                            </div>
+
+                            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+                            <script>
+                                function convertCurrency() {
+                                    const cryptoSelect = document.getElementById('crypto-select');
+                                    const amountInput = document.getElementById('amount-input');
+                                    const resultDiv = document.getElementById('result');
+
+                                    const crypto = cryptoSelect.value;
+                                    const amount = parseFloat(amountInput.value);
+
+                                    if (!crypto || isNaN(amount)) {
+                                        resultDiv.innerHTML = 'Por favor, selecione uma criptomoeda e insira uma quantidade válida.';
+                                        return;
+                                    }
+
+                                    axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd,brl,eur,gbp,jpy,cad,aud,chf,cny,hkd,inr`)
+                                        .then(response => {
+                                            const priceUSD = response.data[crypto].usd;
+                                            const priceBRL = response.data[crypto].brl;
+                                            const priceEUR = response.data[crypto].eur;
+                                            const priceGBP = response.data[crypto].gbp;
+                                            const priceJPY = response.data[crypto].jpy;
+                                            const priceCAD = response.data[crypto].cad;
+                                            const priceAUD = response.data[crypto].aud;
+                                            const priceCHF = response.data[crypto].chf;
+                                            const priceCNY = response.data[crypto].cny;
+                                            const priceHKD = response.data[crypto].hkd;
+                                            const priceINR = response.data[crypto].inr;
+
+                                            const conversionUSD = priceUSD * amount;
+                                            const conversionBRL = priceBRL * amount;
+                                            const conversionEUR = priceEUR * amount;
+                                            const conversionGBP = priceGBP * amount;
+                                            const conversionJPY = priceJPY * amount;
+                                            const conversionCAD = priceCAD * amount;
+                                            const conversionAUD = priceAUD * amount;
+                                            const conversionCHF = priceCHF * amount;
+                                            const conversionCNY = priceCNY * amount;
+                                            const conversionHKD = priceHKD * amount;
+                                            const conversionINR = priceINR * amount;
+
+                                            resultDiv.innerHTML = `
+                              ${amount} ${crypto.toUpperCase()}:
+                              <ul>
+                                <li>USD: $${conversionUSD.toFixed(2)}</li>
+                                <li>BRL: R$${conversionBRL.toFixed(2)}</li>
+                                <li>EUR: €${conversionEUR.toFixed(2)}</li>
+                                <li>GBP: £${conversionGBP.toFixed(2)}</li>
+                                <li>JPY: ¥${conversionJPY.toFixed(2)}</li>
+                                <li>CAD: C$${conversionCAD.toFixed(2)}</li>
+                                <li>AUD: A$${conversionAUD.toFixed(2)}</li>
+                                <li>CHF: Fr.${conversionCHF.toFixed(2)}</li>
+                                <li>CNY: ¥${conversionCNY.toFixed(2)}</li>
+                                <li>HKD: HK$${conversionHKD.toFixed(2)}</li>
+                                <li>INR: ₹${conversionINR.toFixed(2)}</li>
+                              </ul>
+                            `;
+                                        })
+                                        .catch(error => {
+                                            console.error(error);
+                                            resultDiv.innerHTML = 'Ocorreu um erro ao converter a moeda.';
+                                        });
+                                }
+
+                                axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=300&page=1&sparkline=false')
+                                    .then(response => {
+                                        const cryptoData = response.data;
+                                        let html = '';
+
+                                        cryptoData.forEach((crypto, index) => {
+                                            const {
+                                                name,
+                                                symbol,
+                                                current_price,
+                                                circulating_supply,
+                                                total_volume,
+                                                market_cap
+                                            } = crypto;
+                                            const formattedMarketCap = new Intl.NumberFormat('en-US', {
+                                                style: 'currency',
+                                                currency: 'USD'
+                                            }).format(market_cap);
+
+                                            html += `
+                              <tr>
+                                <th scope="row">${index + 1}</th>
+                                <td>${name} (${symbol.toUpperCase()})</td>
+                                <td>${current_price.toFixed(2)}</td>
+                                <td>${circulating_supply.toFixed(2)}</td>
+                                <td>${total_volume.toLocaleString()}</td>
+                                <td>${formattedMarketCap}</td>
+                              </tr>
+                            `;
+                                        });
+
+                                        document.getElementById('crypto-list').innerHTML = html;
+                                    })
+                                    .catch(error => {
+                                        console.error(error);
+                                    });
+                            </script>
+
+                            <p> </p>
+
+
+
+                            <style>
+                                .retangulo-amarelo {
+                                    background-color: rgb(0, 0, 0);
+                                    padding: 10px;
+                                    display: inline-block;
+                                    border: #000000;
+                                    border-radius: 10px;
+                                }
+                            </style>
+
+                            <h1>
+                                <span class="retangulo-amarelo">Converse conosco                                </span>
+                            </h1>
+                            <div class="contact-form">
+                                <div class="section-field">
+                                    <input class="require" id="contact_name" type="text" placeholder="Name*" name="name">
+                                </div>
+                                <div class="section-field">
+                                    <input class="require" id="contact_email" type="email" placeholder="Email*" name="email">
+                                </div>
+                                <div class="section-field">
+                                    <input class="require" id="contact_phone" type="text" placeholder="Phone*" name="phone">
+                                </div>
+                                <div class="section-field textarea">
+                                    <textarea id="contact_message" class="input-message require" placeholder="Comment*" rows="5" name="message"></textarea>
+                                </div>
+                                <div class="section-field iq-mt-20">
+                                    <div class="g-recaptcha" data-sitekey="6Lc5XV4UAAAAAJzUmGomye9Peru8lXyzT22FH0lX"></div>
+                                </div>
+                                <div class="d-block text-center">
+                                    <button id="submit" name="submit" type="submit" value="Send" class="button iq-mt-15">Send Message </button>
+                                </div>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert" id="success">
+                                    <strong>Thank You, Your message has been received.</strong>.
+                                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span> 
+                                    <button href="ENVIE MENSAGEM" button>
+                                </button>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+
+
+            </div>
+
+
+            </body>
+
+</html>
